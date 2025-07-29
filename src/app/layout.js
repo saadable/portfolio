@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Mr. Saad Portfolio",
   description: "Full Stack Mern Developer with Next js expertise. I Deliver a fully optimized website, responsive on all screen devices e.g mobile screen, laptop screen, tablets(tabs) screens and large screen devices. Don't hesitate to contact me to make a next step for your journey.",
+  content: 'Full Stack Web Developer | MERN Stack Developer | Next js Developer'
 };
 
 export default function RootLayout({ children }) {

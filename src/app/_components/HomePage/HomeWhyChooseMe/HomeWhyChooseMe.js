@@ -28,7 +28,7 @@ const HomeWhyChooseMe = () => {
 
 
     return (
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between px-5  lg:px-37 mt-10 gap-10">
+        <div className="flex flex-col-reverse md:flex-row overflow-hidden items-center justify-between px-5  lg:px-37 mt-10 gap-10">
             {/* Right Side - Text Content */}
             <motion.div
                 className="why-me-text"
