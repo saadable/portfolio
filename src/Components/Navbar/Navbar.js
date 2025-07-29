@@ -82,7 +82,7 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.4, ease: 'easeInOut' }}
-                            className="fixed top-19 right-0 h-full w-[75%] max-w-sm bg-black text-white z-40 flex flex-col px-6 py-8 space-y-6 shadow-lg"
+                            className="fixed top-18.5 right-0 h-full w-[75%] max-w-sm bg-black text-white z-40 flex flex-col px-0 py-5 space-y-6 shadow-lg"
                         >
                             {navLinks.map((item, i) => {
                                 const isActive = pathname === item.href
@@ -92,7 +92,7 @@ const Navbar = () => {
                                     <div key={i} className="relative">
                                         <button
                                             onClick={() => item.subLinks ? toggleDropdown(i) : setNav(false)}
-                                            className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
+                                            className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold rounded ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
                                         >
                                             <Link href={item.href}>{item.label}</Link>
                                             {item.subLinks && (
