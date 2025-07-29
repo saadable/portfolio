@@ -26,7 +26,7 @@ const HomePageBanner = () => {
           className='bg-blue-500 px-4 py-1 -mb-3 text-white text-[10px] md:text-[10px] font-muli rounded-full shadow-sm'
           variants={fadeInUp}
         >
-          MERN Stack Web Developer | Full-Stack Web Solutions for the Digital Era
+          MERN Stack Web Developer | Full-Stack Web Solutions
         </motion.p>
 
         <motion.div
