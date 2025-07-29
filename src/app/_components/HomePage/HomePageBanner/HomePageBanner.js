@@ -16,7 +16,7 @@ const HomePageBanner = () => {
   return (
     <div className='w-full h-[80vh] lg:h-[100vh] flex items-center justify-center px-8 md:px-16'>
       <motion.div
-        className="banner-text flex flex-col items-start gap-4"
+        className="banner-text flex flex-col items-center gap-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
@@ -26,7 +26,7 @@ const HomePageBanner = () => {
           className='bg-blue-500 px-4 py-1 -mb-3 text-white text-[10px] md:text-[10px] font-muli rounded-full shadow-sm'
           variants={fadeInUp}
         >
-          MERN Stack Developer
+          MERN Stack Web Developer | Full-Stack Web Solutions for the Digital Era
         </motion.p>
 
         <motion.div
