@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-const WebsitesImpCards = ({ img, title, desc }) => {
+const WebsitesImpCards = ({ img, title, desc, width, height }) => {
   const [isTouch, setIsTouch] = useState(false)
   const [showDesc, setShowDesc] = useState(false)
 
@@ -42,7 +42,7 @@ const nothandleTouch = () => {
       <div className={`absolute inset-0 flex flex-col items-center justify-center z-10 
         transition-opacity duration-300 ease-in-out 
         ${showDesc ? 'opacity-30' : 'opacity-100'}`}>
-        <Image src={img} alt={title} width={60} height={60} className="mb-4" />
+        <Image src={img} alt={title} width={width} height={height} className="mb-4" />
         <h2 className="text-lg font-bold text-center px-2 font-jakarta">{title}</h2>
       </div>
 

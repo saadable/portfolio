@@ -23,7 +23,7 @@ const HomePageBanner = () => {
         variants={fadeInUp}
       >
         <motion.p
-          className='bg-blue-500 px-4 py-1 text-white text-sm md:text-base font-muli rounded-full shadow-sm'
+          className='bg-blue-500 px-4 py-1 -mb-3 text-white text-[10px] md:text-[10px] font-muli rounded-full shadow-sm'
           variants={fadeInUp}
         >
           MERN Stack Developer
