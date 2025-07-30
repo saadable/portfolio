@@ -34,7 +34,7 @@ const WhyWebsiteImp = () => {
                 {cards.map((item, i) => (
                     <motion.div
                         key={i}
-                        className="w-full"
+                        className=""
                         initial={{ scale: 0.5, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.3, delay: i * 0.1 }}
