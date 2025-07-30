@@ -3,6 +3,7 @@
 
 *{
   user-select: none;
+  scroll-behavior: smooth;
 }
 :root {
   --background: #ffffff;

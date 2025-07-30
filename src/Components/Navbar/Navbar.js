@@ -17,14 +17,14 @@ const Navbar = () => {
     const navLinks = [
         { label: 'Home', href: '/' },
         {
-            label: 'About Me', href: '#',
+            label: 'About Me',
             subLinks: [
                 { label: 'Education', href: '/education' },
                 { label: 'Skills', href: '/skills' },
                 { label: 'Projects', href: '/projects' },
             ]
         },
-        { label: 'Contact Me', href: '/contact' },
+        { label: 'Contact Me', href: '/contact-me' },
     ]
 
     useEffect(() => {
@@ -94,7 +94,7 @@ const Navbar = () => {
                                             onClick={() => item.subLinks ? toggleDropdown(i) : setNav(false)}
                                             className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold rounded ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
                                         >
-                                            <Link href={item.href}>{item.label}</Link>
+                                            {item.label}
                                             {item.subLinks && (
                                                 <FaAngleDown
                                                     className={`transition-transform duration-300 text-sm ${isOpen ? 'rotate-180' : 'rotate-0'}`}
@@ -139,7 +139,7 @@ const Navbar = () => {
                                     before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-[2px]
                                     before:w-0 hover:before:w-full before:bg-red-600 before:transition-all before:duration-300`}
                                 >
-                                    <Link href={item.href}>{item.label}</Link>
+                                    {item.label}
                                     {item.subLinks && (
                                         <FaAngleDown
                                             className={`transition-transform duration-300 text-sm mt-[1px] ${isOpen ? 'rotate-180' : 'rotate-0'}`}
