@@ -60,7 +60,7 @@ const Footer = () => {
                         <div className="social-media-iconss flex items-center gap-2 mt-3">
                             {icons.map((item, i) => (
                                 <div
-                                    className="social-icons border border-red-800 rounded-full p-4 text-[20px] hover:bg-red-800 hover:text-white hover:shadow-[0px_0px_10px_0.5px_red] transition ease-in-out duration-500 cursor-pointer"
+                                    className="social-icons border border-red-800 text-white  rounded-full p-4 text-[20px] hover:bg-red-800 hover:text-white hover:shadow-[0px_0px_10px_0.5px_red] transition ease-in-out duration-500 cursor-pointer"
                                 >
                                     {item.social_icon}
                                 </div>

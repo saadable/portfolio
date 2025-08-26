@@ -19,11 +19,12 @@ const Navbar = () => {
         {
             label: 'About Me',
             subLinks: [
-                { label: 'Education', href: '/education' },
+                { label: 'Education', href: '/about-me/education' },
                 { label: 'Skills', href: '/skills' },
                 { label: 'Projects', href: '/projects' },
             ]
         },
+        { label: 'Services', href: '/services' },
         { label: 'Contact Me', href: '/contact-me' },
     ]
 
@@ -134,7 +135,7 @@ const Navbar = () => {
                             <div key={i} className="relative">
                                 <button
                                     onClick={() => item.subLinks ? toggleDropdown(i) : null}
-                                    className={`relative flex items-center gap-1 px-3 py-1 transition duration-300
+                                    className={`relative flex cursor-pointer items-center gap-1 px-3 py-1 transition duration-300
                                     ${isActive ? 'text-red-700 font-semibold' : 'hover:text-red-500'}
                                     before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-[2px]
                                     before:w-0 hover:before:w-full before:bg-red-600 before:transition-all before:duration-300`}
@@ -156,7 +157,7 @@ const Navbar = () => {
                                             <Link
                                                 key={j}
                                                 href={sub.href}
-                                                className={`block px-4 py-2 text-sm hover:bg-red-800 transition duration-400 ${pathname === sub.href ? 'text-red-600 font-medium' : ''}`}
+                                                className={`block px-4 py-2 text-sm hover:bg-red-800 transition duration-400 ${pathname === sub.href ? 'bg-red-800 text-white font-medium' : ''}`}
                                             >
                                                 {sub.label}
                                             </Link>
