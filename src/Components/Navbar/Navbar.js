@@ -13,15 +13,14 @@ const Navbar = () => {
     const [openIndex, setOpenIndex] = useState(null)
     const dropdownRef = useRef(null)
     const [nav, setNav] = useState(false)
-    const [navlink, setNavlink] = useState('home')
     const navLinks = [
         { label: 'Home', href: '/' },
         {
             label: 'About Me',
             subLinks: [
                 { label: 'Education', href: '/about-me/education' },
-                { label: 'Skills', href: '/skills' },
-                { label: 'Projects', href: '/projects' },
+                { label: 'Skills', href: '/about-me/skills' },
+                { label: 'Projects', href: '/about-me/projects' },
             ]
         },
         { label: 'Services', href: '/services' },
@@ -40,6 +39,12 @@ const Navbar = () => {
 
     const toggleDropdown = (i) => {
         setOpenIndex((prevIndex) => (prevIndex === i ? null : i))
+    }
+
+    // Animation variants
+    const dropdownVariants = {
+        hidden: { opacity: 0, height: 0, transition: { duration: 0.3, ease: "easeInOut" } },
+        visible: { opacity: 1, height: "auto", transition: { duration: 0.4, ease: "easeInOut" } }
     }
 
     return (
@@ -62,7 +67,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className='block lg:hidden text-[30px] transition duration-500 ease-in-out transform'
+                    className='block lg:hidden text-[30px]'
                     onClick={() => setNav(!nav)}
                 >
                     <motion.div
@@ -83,14 +88,14 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.4, ease: 'easeInOut' }}
-                            className="fixed top-18.5 right-0 h-full w-[75%] max-w-sm bg-black text-white z-40 flex flex-col px-0 py-5 space-y-6 shadow-lg"
+                            className="fixed top-[72px] right-0 h-full w-full items-center max-w-sm bg-black text-white z-40 flex flex-col px-0 py-5 space-y-6 shadow-lg"
                         >
                             {navLinks.map((item, i) => {
                                 const isActive = pathname === item.href
                                 const isOpen = openIndex === i
 
                                 return (
-                                    <div key={i} className="relative">
+                                    <div key={i} className="relative w-full px-5">
                                         <button
                                             onClick={() => item.subLinks ? toggleDropdown(i) : setNav(false)}
                                             className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold rounded ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
@@ -103,21 +108,30 @@ const Navbar = () => {
                                             )}
                                         </button>
 
-                                        {/* Sub Links */}
-                                        {item.subLinks && (
-                                            <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                                {item.subLinks.map((sub, j) => (
-                                                    <Link
-                                                        key={j}
-                                                        href={sub.href}
-                                                        className={`block px-6 py-2 text-sm ${pathname === sub.href ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
-                                                        onClick={() => setNav(false)}
-                                                    >
-                                                        {sub.label}
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                        )}
+                                        {/* Sub Links with animation */}
+                                        <AnimatePresence>
+                                            {isOpen && (
+                                                <motion.div
+                                                    key="mobile-sub"
+                                                    variants={dropdownVariants}
+                                                    initial="hidden"
+                                                    animate="visible"
+                                                    exit="hidden"
+                                                    className="overflow-hidden w-full"
+                                                >
+                                                    {item.subLinks.map((sub, j) => (
+                                                        <Link
+                                                            key={j}
+                                                            href={sub.href}
+                                                            className={`block px-6 py-2 text-sm ${pathname === sub.href ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
+                                                            onClick={() => setNav(false)}
+                                                        >
+                                                            {sub.label}
+                                                        </Link>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 )
                             })}
@@ -136,9 +150,7 @@ const Navbar = () => {
                                 <button
                                     onClick={() => item.subLinks ? toggleDropdown(i) : null}
                                     className={`relative flex cursor-pointer items-center gap-1 px-3 py-1 transition duration-300
-                                    ${isActive ? 'text-red-700 font-semibold' : 'hover:text-red-500'}
-                                    before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-[2px]
-                                    before:w-0 hover:before:w-full before:bg-red-600 before:transition-all before:duration-300`}
+                                    ${isActive ? 'text-red-700 font-semibold' : 'hover:text-red-500'}`}
                                 >
                                     {item.label}
                                     {item.subLinks && (
@@ -148,22 +160,29 @@ const Navbar = () => {
                                     )}
                                 </button>
 
-                                {/* Sub Links */}
-                                {item.subLinks && (
-                                    <div
-                                        className={`absolute top-full left-0 mt-2 bg-black shadow-md border border-red-800 rounded-md z-50 w-40 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 scale-100 max-h-96' : 'opacity-0 scale-95 max-h-0 pointer-events-none'}`}
-                                    >
-                                        {item.subLinks.map((sub, j) => (
-                                            <Link
-                                                key={j}
-                                                href={sub.href}
-                                                className={`block px-4 py-2 text-sm hover:bg-red-800 transition duration-400 ${pathname === sub.href ? 'bg-red-800 text-white font-medium' : ''}`}
-                                            >
-                                                {sub.label}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                )}
+                                {/* Sub Links with animation */}
+                                <AnimatePresence>
+                                    {isOpen && (
+                                        <motion.div
+                                            key="desktop-sub"
+                                            variants={dropdownVariants}
+                                            initial="hidden"
+                                            animate="visible"
+                                            exit="hidden"
+                                            className="absolute top-full left-0 mt-2 bg-black shadow-md border border-red-800 rounded-md z-50 w-40 overflow-hidden"
+                                        >
+                                            {item.subLinks.map((sub, j) => (
+                                                <Link
+                                                    key={j}
+                                                    href={sub.href}
+                                                    className={`block px-4 py-2 text-sm hover:bg-red-800 transition duration-400 ${pathname === sub.href ? 'bg-red-800 text-white font-medium' : ''}`}
+                                                >
+                                                    {sub.label}
+                                                </Link>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         )
                     })}
