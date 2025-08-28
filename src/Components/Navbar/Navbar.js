@@ -23,8 +23,8 @@ const Navbar = () => {
                 { label: 'Projects', href: '/about-me/projects' },
             ]
         },
-        { label: 'Services', href: '/services' },
-        { label: 'Contact Me', href: '/contact-me' },
+        // { label: 'Services', href: '/services' },
+        { label: 'Contact Me', href: '/#contact-me' },
     ]
 
     useEffect(() => {
@@ -88,7 +88,7 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.4, ease: 'easeInOut' }}
-                            className="fixed top-[72px] right-0 h-full w-full items-center max-w-sm bg-black text-white z-40 flex flex-col px-0 py-5 space-y-6 shadow-lg"
+                            className="fixed top-[72px] right-0 h-full w-full items-center  bg-black text-white z-40 flex flex-col px-0 py-5 space-y-6 shadow-lg"
                         >
                             {navLinks.map((item, i) => {
                                 const isActive = pathname === item.href
@@ -96,21 +96,29 @@ const Navbar = () => {
 
                                 return (
                                     <div key={i} className="relative w-full px-5">
-                                        <button
-                                            onClick={() => item.subLinks ? toggleDropdown(i) : setNav(false)}
-                                            className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold rounded ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
-                                        >
-                                            {item.label}
-                                            {item.subLinks && (
+                                        {item.subLinks ? (
+                                            <button
+                                                onClick={() => toggleDropdown(i)}
+                                                className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold rounded ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
+                                            >
+                                                {item.label}
                                                 <FaAngleDown
-                                                    className={`transition-transform duration-300 text-sm ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                                                    className={`transition-transform duration-300 text-sm ${openIndex === i ? 'rotate-180' : 'rotate-0'}`}
                                                 />
-                                            )}
-                                        </button>
+                                            </button>
+                                        ) : (
+                                            <Link
+                                                href={item.href}
+                                                onClick={() => setNav(false)} // ✅ close menu after navigation
+                                                className={`flex items-center justify-between w-full text-left px-2 py-2 font-semibold rounded ${isActive ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
+                                            >
+                                                {item.label}
+                                            </Link>
+                                        )}
 
-                                        {/* Sub Links with animation */}
+                                        {/* Sub Links */}
                                         <AnimatePresence>
-                                            {isOpen && (
+                                            {openIndex === i && item.subLinks && (
                                                 <motion.div
                                                     key="mobile-sub"
                                                     variants={dropdownVariants}
@@ -124,7 +132,7 @@ const Navbar = () => {
                                                             key={j}
                                                             href={sub.href}
                                                             className={`block px-6 py-2 text-sm ${pathname === sub.href ? 'bg-red-800 text-white' : 'hover:text-red-400'}`}
-                                                            onClick={() => setNav(false)}
+                                                            onClick={() => setNav(false)} // ✅ close after navigation
                                                         >
                                                             {sub.label}
                                                         </Link>
@@ -133,6 +141,7 @@ const Navbar = () => {
                                             )}
                                         </AnimatePresence>
                                     </div>
+
                                 )
                             })}
                         </motion.div>
@@ -147,18 +156,27 @@ const Navbar = () => {
 
                         return (
                             <div key={i} className="relative">
-                                <button
-                                    onClick={() => item.subLinks ? toggleDropdown(i) : null}
-                                    className={`relative flex cursor-pointer items-center gap-1 px-3 py-1 transition duration-300
-                                    ${isActive ? 'text-red-700 font-semibold' : 'hover:text-red-500'}`}
-                                >
-                                    {item.label}
-                                    {item.subLinks && (
+                                {item.subLinks ? (
+                                    <button
+                                        onClick={() => toggleDropdown(i)}
+                                        className={`relative flex cursor-pointer items-center gap-1 px-3 py-1 transition duration-300
+    ${isActive ? 'text-red-700 font-semibold' : 'hover:text-red-500'}`}
+                                    >
+                                        {item.label}
                                         <FaAngleDown
                                             className={`transition-transform duration-300 text-sm mt-[1px] ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                                         />
-                                    )}
-                                </button>
+                                    </button>
+                                ) : (
+                                    <Link
+                                        href={item.href}
+                                        className={`relative flex cursor-pointer items-center gap-1 px-3 py-1 transition duration-300
+    ${isActive ? 'text-red-700 font-semibold' : 'hover:text-red-500'}`}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                )}
+
 
                                 {/* Sub Links with animation */}
                                 <AnimatePresence>

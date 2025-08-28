@@ -31,7 +31,7 @@ const Services = () => {
 
     }
     return (
-        <div className="min-h-screen  text-white flex flex-col md:flex-row items-center justify-center gap-5 py-12 px-5 md:px-15">
+        <div id="contact-me" className="min-h-screen  text-white flex flex-col md:flex-row items-center justify-center gap-5 py-12 px-5 md:px-15">
 
             {/* Right Side - Contact Form */}
             <div className="right-side w-full md:w-1/2 bg-black p-8 rounded-2xl shadow-lg border border-red-800">
