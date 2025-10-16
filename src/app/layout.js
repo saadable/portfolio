@@ -79,14 +79,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning
-      >
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
+      <body suppressHydrationWarning>
         <ScrollToTopButton/>
         <Navbar/>
         {children}
         <Footer/>
         <Script
-          id="structured-data"
+          id="structured-data-person"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -113,6 +120,37 @@ export default function RootLayout({ children }) {
                 "MongoDB",
                 "Web Development",
               ],
+            }),
+          }}
+        />
+        <Script
+          id="structured-data-website"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://mrsaad.site/#organization",
+                  "name": "Mr. Saad",
+                  "url": "https://mrsaad.site",
+                  "logo": "https://mrsaad.site/logo.png",
+                  "sameAs": [
+                    "https://github.com/saadable",
+                    "https://www.linkedin.com/in/saad-sajid-42b683232/",
+                    "https://twitter.com/saadsajid_"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://mrsaad.site/#website",
+                  "url": "https://mrsaad.site",
+                  "name": "Mr. Saad Portfolio",
+                  "publisher": { "@id": "https://mrsaad.site/#organization" }
+                }
+              ]
             }),
           }}
         />
