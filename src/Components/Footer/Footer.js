@@ -48,7 +48,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-top divs hidden md:block  ml-40">
                         {FooterLinks.map((item, i) => (
-                            <ul>
+                            <ul key={i}>
                                 <Link className='font-muli hover:text-red-800 transition ease-in-out duration-300' href={item.href}><li className='' style={{ listStyleType: 'circle' }}>{item.label}</li></Link>
                             </ul>
                         ))}
