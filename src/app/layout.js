@@ -18,6 +18,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL("https://mrsaad.site"),
   title: "Mr. Saad | Full Stack MERN Developer",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   description:
     "Full Stack MERN Developer with Next.js expertise. Building fast, secure, and responsive websites optimized for all devices.",
   keywords: [
