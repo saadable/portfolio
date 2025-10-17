@@ -17,25 +17,30 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://mrsaad.site"),
-  title: "Mr. Saad | Full Stack MERN Developer",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+  title: {
+    default: "Mr. Saad | Full Stack MERN Developer",
+    template: "%s | Mr. Saad",
   },
   description:
-    "Full Stack MERN Developer with Next.js expertise. Building fast, secure, and responsive websites optimized for all devices.",
+    "Mr. Saad — Full Stack MERN developer (Next.js, React, Node, MongoDB). Portfolio, projects and contact.",
   keywords: [
+    "Mr Saad",
+    "mrsaad",
+    "mistersaad",
     "Full Stack Developer",
     "MERN Developer",
+    "MERN Stack Developer",
     "Next.js Developer",
     "React.js Developer",
     "Node.js Developer",
     "MongoDB Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "Web Developer Portfolio",
+    "Nextjs Developer",
+    "Portfolio",
   ],
   authors: [{ name: "Saad Sajid", url: "https://mrsaad.site" }],
+  alternates: {
+    canonical: "https://mrsaad.site",
+  },
   creator: "Saad Sajid",
   publisher: "Saad Sajid",
   robots: {
@@ -49,9 +54,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://mrsaad.site",
-  },
   openGraph: {
     title: "Mr. Saad Portfolio",
     description:
@@ -60,7 +62,7 @@ export const metadata = {
     siteName: "Mr. Saad Portfolio",
     images: [
       {
-        url: "https://saadahmeddev.vercel.app/og-image.png",
+        url: "https://mrsaad.site/og-image.png",
         width: 1200,
         height: 630,
         alt: "Mr. Saad Portfolio",
@@ -74,7 +76,7 @@ export const metadata = {
     title: "Mr. Saad Portfolio",
     description:
       "Full Stack MERN Developer with Next.js expertise. Optimized, fast, and responsive websites.",
-    images: ["https://saadahmeddev.vercel.app/og-image.png"],
+    images: ["https://mrsaad.site/og-image.png"],
     creator: "@saadsajid_",
   },
 };
@@ -84,7 +86,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Use favicons served from /public */}
         <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#ffffff" />
       </head>
