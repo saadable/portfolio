@@ -37,12 +37,19 @@ export async function GET() {
   // always include root
   if (!routes.has("/")) routes.add("/");
 
+  // Add dynamic project routes
+  const projectSlugs = ["portfolio-site", "ecommerce-app"]; // Update with actual slugs
+  projectSlugs.forEach(slug => {
+    routes.add(`/projects/${slug}`);
+  });
+
   const urls = Array.from(routes).sort((a, b) => (a === "/" ? -1 : a.localeCompare(b)));
 
   const xmlParts = urls.map((u) => {
     return `
   <url>
     <loc>${baseUrl}${u}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${u === "/" ? "1.0" : "0.8"}</priority>
   </url>`;

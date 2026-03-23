@@ -6,7 +6,7 @@ export function buildMetadata({ title, description, path = "/", keywords = [], i
   return {
     title: fullTitle,
     description,
-    keywords: Array.from(new Set([...(keywords || []), "Mr Saad", "mrsaad", "mistersaad", "MERN Developer", "Next.js Developer"])),
+    keywords: Array.from(new Set([...(keywords || []), "Mr Saad", "mrsaad", "mistersaad", "MERN Developer", "Next.js Developer", "Full Stack Developer", "Web Developer", "Portfolio", "Web Development Tools", "Website Developer", "JavaScript", "React", "Node.js", "MongoDB", "Responsive Design", "Modern Web Technologies"])),
     alternates: { canonical },
     openGraph: {
       title: fullTitle,
