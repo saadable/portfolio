@@ -20,6 +20,19 @@ module.exports = {
       // Example: "https://mrsaad.site/sitemap-0.xml"
     ],
   },
+  additionalPaths: async (config) => {
+    const result = [];
+    const projectSlugs = ["portfolio-site", "ecommerce-app"]; // Update with actual slugs
+    projectSlugs.forEach(slug => {
+      result.push({
+        loc: `/projects/${slug}`,
+        changefreq: "weekly",
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      });
+    });
+    return result;
+  },
   // Optional transform to adjust priority/changefreq per path
   transform: async (config, path) => {
     return {
